@@ -1,0 +1,41 @@
+Use Case:
+1. go to playlist on Spotify
+    - maybe find based on what current playlist
+        (Optional) include what song context is selected?
+    - get session information?
+    - specify from playlist name?
+    - specify from playlist URI?
+2. wait for input()
+    - could be enter key
+        - assume start at top of playlist
+        - assume start at currently played song on Spotify
+            - at the beginning
+            OR
+            - at the current timestamp the song is paused at
+    - could be a command `start-valentine-set-asayoru-cafe`
+        - can track specific sets entirely
+    - could be a menu
+        - GUI
+        - terminal text GUI
+3. play first song of set
+
+WHILE song is not last song
+{
+    4. pause at the end of the song once it finishes playing
+    5. wait for input()
+        6. play next song if there is another song
+            - "Press Enter to play next song"
+            - only plays next song if line is blank
+                - else does nothing and prints error message "command not recognized"
+        OR
+        7. exit the app if song is last song
+            - "Press Enter to exit the app"
+        OR
+        8. custom input to override
+            e.g.
+            - `spotpaus` -> pause current song
+            - `spotnext` -> skip to next song
+            - `spotprev` -> go back to prev song, PAUSED
+            - `spotplay` -> play current song (equivalent would be pressing Enter with blank command line)
+            - `help` -> display commands
+}
