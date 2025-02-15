@@ -1,4 +1,7 @@
-Yes, Spotify provides a Python API through the Spotipy library. Spotipy is a Python client for the Spotify Web API, which allows you to interact with Spotify’s music catalog, manage playlists, and control playback.
+Spotify Authentication
+---
+
+Spotify provides a Python API through the Spotipy library. Spotipy is a Python client for the Spotify Web API, which allows you to interact with Spotify’s music catalog, manage playlists, and control playback.
 
 To use Spotipy, follow these steps:
 	1.	Install the Spotipy library:
