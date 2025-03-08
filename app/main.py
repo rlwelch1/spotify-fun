@@ -1,17 +1,11 @@
-import os
 import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+import app.playback.play_recent as play_recent
+import authentication.auth as auth
+import playback
 
 def main():
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=os.getenv("SPOTIPY_CLIENT_ID"),
-                                                   client_secret=os.getenv("SPOTIPY_CLIENT_SECRET"),
-                                                   redirect_uri=os.getenv("SPOTIPY_REDIRECT_URI"),
-                                                   scope="user-library-read"))
-
-    results = sp.current_user_saved_tracks()
-    for idx, item in enumerate(results['items']):
-        track = item['track']
-        print(f"{idx + 1}. {track['artists'][0]['name']} – {track['name']}")
+    sp = auth.create_spotify_client() # Instantiate Spotify client for session
+    play_recent.play_recent_liked_track(sp, track_num=2)
 
 if __name__ == "__main__":
     main()
