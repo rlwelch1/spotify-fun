@@ -29,5 +29,29 @@ Figure out user needs
 
 
 
-## SoundSwitch Integration
+## SoundSwitch Lightshow Integration
 Audio software called SoundSwitch that uses `.ssproj` (SoundSwitch Project) files to assign lighting configurations to buttons that are controllable by MIDI input.  There are ways to programmatically send midi input through a Python library (`mido`?).  It should be possible to map certain lighting timelines in the `.ssproj` file to a MIDI input that is labelled and programmatically triggered from a Python project.  Simultaneously, it is possible to trigger audio playback at a specified volume, timestamp, and potentially with a fade-in/fade-out.  There is also commonly background music playing before and after a performance song is played.  The app can pause playback (on YouTube, Spotify, SoundCloud, Apple Music, VLC, etc.), run the performance configuration - which comes down to playing the music and playing the lighting show at the same time, and then transition back to the default lighting schema and resume playback of the original background music source that was interrupted to play the performance.
+
+### Experience
+#### In one click:
+
+##### -- Performance Begins --
+
+- playback of background music stops
+    - [optional] fade out
+- playback of performance music begins
+    - [optional] fade in
+    - volume control setting for each song and for each microphone
+    - saved mic volume levels, set to performance level
+- lighting timeline for the song kicks off
+
+##### -- Performance Concludes --
+
+- playback of performance music stops
+    - [optional] fade out
+- playback of background music resumes playing
+    - [optional] fade in
+    - volume matched to what it was when paused initially
+- lighting control timeline concludes
+    - [optional] force stop lighting playback if desired
+    - lighting returns to default café settings
