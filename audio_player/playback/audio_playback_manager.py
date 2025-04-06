@@ -43,6 +43,12 @@ class AudioPlaybackManager:
                 return device['id']
         return None
     
+    def choose_device(self):
+        """
+        Fetches the list of devices and prompts the user to select one during app setup.
+        """
+        pass # TODO: Implement and move device logic to separate class
+
     def get_current_macbook(self):
         """
         Returns the ID of the MacBook device runing the app.

@@ -11,7 +11,9 @@ class CommandMenu:
             'song-list':
                 lambda x: self.apm.show_song_list(),
             'rr': # rickroll
-                lambda x: self.apm.play_song_by_uri("spotify:track:4PTG3Z6ehGkBFwjybzWkR8")
+                lambda x: self.apm.play_song_by_uri("spotify:track:4PTG3Z6ehGkBFwjybzWkR8"),
+            'help':
+                lambda x: self.list_commands()
         }
 
     def execute_command(self, command, arg):
@@ -20,4 +22,12 @@ class CommandMenu:
             func_to_execute(arg) # pass the argument to the function
         else:
             raise ValueError(f"Command '{command}' not found in command menu.")
+    
+    def list_commands(self):
+        """
+        Lists all available commands in the command menu.
+        """
+        print("Available commands:")
+        for command in self.command_menu:
+            print(f"- {command}")
         
