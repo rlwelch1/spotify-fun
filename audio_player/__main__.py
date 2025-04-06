@@ -6,15 +6,21 @@ def main():
     spotify_client = auth.create_spotify_client()   # Instantiate Spotify client for session
     apm = AudioPlaybackManager(spotify_client)      # Audio Playback Manager
 
+    # Color codes for terminal output
+    YELLOW = "\033[33m"
+    GREEN = "\033[32m"
+    RESET = "\033[0m"
+
     print("Welcome to the OCP (One Click Performances) app!")
     print("Type 'exit' to quit.\n")
     while True:
         # Get user input
-        usr_inp = input("ocp % ") # ocp: one click performances
+        usr_inp = input(f"{GREEN}ocp % {RESET}") # ocp: one click performances
         split_inp = usr_inp.split()
         first_token = usr_inp.split()[0]
         arg = usr_inp.split(first_token)[1].strip() if len(split_inp) > 1 else None
 
+        # Exit program or attempt to execute command
         if usr_inp == 'exit':
             break
         else:
