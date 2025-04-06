@@ -4,9 +4,8 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
 def create_spotify_client():
-    print("Loading environment variables...")
+    # Load environment variables from .env file
     load_dotenv()
-    print("Loaded")
 
     # Validate environment variables were loaded successfully from .env file
     if not validate_env_variables():
@@ -27,7 +26,6 @@ def validate_env_variables():
     missing_vars = [var for var in required_vars if not os.getenv(var)]
     if missing_vars:
         raise EnvironmentError(f"Error: Missing environment variables: {', '.join(missing_vars)}")
-    print("All required environment variables are loaded successfully.")
     return True
 
 def generate_access_token(sp):
