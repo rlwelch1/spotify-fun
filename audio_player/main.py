@@ -1,5 +1,5 @@
 import spotipy
-import app.playback.play_recent as play_recent
+import audio_player.playback.play_recent as play_recent
 import authentication.auth as auth
 import playback
 from playback.play import play_song
