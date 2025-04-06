@@ -13,9 +13,9 @@ def create_spotify_client():
         raise EnvironmentError("Error: Missing environment variables.")
 
 
-    return spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=os.getenv("SPOTIPY_CLIENT_ID"),
-                                                     client_secret=os.getenv("SPOTIPY_CLIENT_SECRET"),
-                                                     redirect_uri=os.getenv("SPOTIPY_REDIRECT_URI"),
+    return spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=os.getenv("SPOTIFY_CLIENT_ID"),
+                                                     client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
+                                                     redirect_uri=os.getenv("SPOTIFY_REDIRECT_URI"),
                                                      scope="user-library-read user-modify-playback-state user-read-playback-state",
                                                      cache_path=".cache"))
 
@@ -23,7 +23,7 @@ def validate_env_variables():
     """
     Validates that the required environment variables are loaded.
     """
-    required_vars = ["SPOTIPY_CLIENT_ID", "SPOTIPY_CLIENT_SECRET", "SPOTIPY_REDIRECT_URI"]
+    required_vars = ["SPOTIFY_CLIENT_ID", "SPOTIFY_CLIENT_SECRET", "SPOTIFY_REDIRECT_URI"]
     missing_vars = [var for var in required_vars if not os.getenv(var)]
     if missing_vars:
         raise EnvironmentError(f"Error: Missing environment variables: {', '.join(missing_vars)}")
