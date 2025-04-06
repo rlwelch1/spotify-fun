@@ -55,3 +55,13 @@ Audio software called SoundSwitch that uses `.ssproj` (SoundSwitch Project) file
 - lighting control timeline concludes
     - [optional] force stop lighting playback if desired
     - lighting returns to default café settings
+
+
+### Technical Challenges
+#### SoundSwitch MIDI Controller
+Proof of concept trigger a timeline event on SoundSwitch via MIDI input.
+##### 1. MIDI Controller
+First input could be MIDI controller pad just to see how to map MIDI outputs inside SoundSwitch.
+##### 2. Python library MIDI output
+Second input, more technical, is having SoundSwitch trigger off of a Python MIDI output from a MIDI controller library.
+
