@@ -1,18 +1,19 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
-class AudioPlayer:
-    def __init__(self, spotipy_client):
+class AudioPlaybackManager:
+    def __init__(self, spotify_client):
         """
-        Initialize the AudioPlayer with a Spotipy client instance.
+        Initialize the AudioPlaybackManager with a Spotify client instance.
         """
-        self.spotipy_client = spotipy_client
+        self.spotify_client = spotify_client
+
 
     def get_active_device(self):
         """
         Returns the ID of the active device.
         """
-        devices = self.spotipy_client.devices()
+        devices = self.spotify_client.devices()
         for device in devices['devices']:
             if device['is_active']:
                 return device['id']
@@ -24,7 +25,7 @@ class AudioPlayer:
         """
         device_id = self.get_active_device()
         if device_id:
-            self.spotipy_client.start_playback(device_id=device_id, uris=[uri])
+            self.spotify_client.start_playback(device_id=device_id, uris=[uri])
         else:
             print("No active devices found.")
 
@@ -39,11 +40,11 @@ class AudioPlayer:
             print("No active device found. Please open Spotify and start playing music on one of your devices.")
             return
 
-        results = self.spotipy_client.current_user_saved_tracks(limit=track_num)
+        results = self.spotify_client.current_user_saved_tracks(limit=track_num)
         if results['items']:
             track_idx = track_num - 1
             track_uri = results['items'][track_idx]['track']['uri']
             print(f"\nPlaying: {results['items'][track_idx]['track']['name']}\n")
-            self.spotipy_client.start_playback(device_id=device_id, uris=[track_uri])
+            self.spotify_client.start_playback(device_id=device_id, uris=[track_uri])
         else:
             print("No liked tracks found.")
