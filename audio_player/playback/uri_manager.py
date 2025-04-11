@@ -4,24 +4,28 @@ from audio_player.playback.song import Song
 class URIManager:
     def __init__(self):
         self.uris = {} # map from song_name to uri
-        self.songs = {} # map from track_name to Song object
+        self.song_alias_to_song = {} # map from track_name to Song object
         with open("audio_player/playback/song_name_to_url.txt", "r") as f:
             for line in f:
                 song_alias, url = line.strip().split(" | ")
                 uri = self.convert_url_to_uri(url)
-                self.songs[song_alias] = Song(uri, song_alias)
-    
+                self.song_alias_to_song[song_alias] = Song(uri, song_alias)
+                self.uri_to_song[uri] = self.song_alias_to_song[song_alias]
+
     def get_tracks(self, spotify_client):
-        return [song.get_track(spotify_client) for song in self.songs.values()]  # list of tracks
+        return [song.get_track(spotify_client) for song in self.song_alias_to_song.values()]  # list of tracks
     
+    def get_song(self, uri):
+        return self.uri_to_song[uri]
+
     def get_songs(self):
-        return self.songs.values()
+        return self.song_alias_to_song.values()
 
     def get_song_names(self, spotify_client):
-        return [song.get_song_name(spotify_client) for song in self.songs.values()]  # list of song names
+        return [song.get_song_name(spotify_client) for song in self.song_alias_to_song.values()]  # list of song names
     
     def get_album_art_urls(self, spotify_client):
-        return [song.get_album_art_url(spotify_client) for song in self.songs.values()] # list of album art urls
+        return [song.get_album_art_url(spotify_client) for song in self.song_alias_to_song.values()] # list of album art urls
 
     def convert_url_to_uri(self, url: str) -> str:
         """Converts a Spotify URL to a URI."""

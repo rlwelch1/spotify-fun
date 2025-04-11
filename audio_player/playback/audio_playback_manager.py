@@ -12,6 +12,7 @@ class AudioPlaybackManager:
         self.uri_manager = URIManager()
         self.device_id = self.get_device()
         self.command_menu = CommandMenu(self)
+        self.current_song = None
 
     def execute_command(self, command, arg):
         """
@@ -92,6 +93,7 @@ class AudioPlaybackManager:
         """
         if self.device_id:
             self.spotify_client.start_playback(device_id=self.device_id, uris=[uri])
+            self.current_song = self.uri_manager.get_song(uri) # keep track of current song
         else:
             print("No active devices found.")
 
