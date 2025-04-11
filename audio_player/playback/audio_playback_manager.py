@@ -28,7 +28,7 @@ class AudioPlaybackManager:
         """
         active_device = self.get_active_device()
         current_mac = self.get_current_macbook()
-        device_id = active_device if not current_mac else current_mac
+        device_id = current_mac if not active_device else active_device
         if not device_id:
             raise RuntimeError("No active devices found.")
         return device_id
@@ -63,7 +63,7 @@ class AudioPlaybackManager:
             # print(device['id'])
             ryan_mac_name = "Ryan's MacBook Air"
             if device['name'] == ryan_mac_name:
-                print("found it\n\n\n")
+                print("\n\n\nfound \"Ryan's MacBook Air\"\n\n\n")
                 return device['id']
         return None
 
@@ -115,5 +115,25 @@ class AudioPlaybackManager:
         else:
             print("No liked tracks found.")
     
-    def show_song_list(self):
-        print(self.uri_manager)
+    def seek_current_track(self, position_ms, device_id=None):
+        """
+        Seeks to a specific position in the currently playing track.
+        """
+        if device_id is None:
+            device_id = self.device_id
+        self.spotify_client.seek_track(position_ms, device_id=device_id)
+    
+    def get_songs(self):
+        """
+        Returns a list of songs from the uri_manager.
+        """
+        return self.uri_manager.get_songs()
+
+    def get_song_name_list(self):
+        return self.uri_manager.get_song_names(self.spotify_client)
+
+    def get_track_list(self):
+        return self.uri_manager.get_tracks(self.spotify_client)
+    
+    def get_album_art_url_list(self):
+        return [track['album']['images'][0]['url'] for track in self.get_track_list()]
