@@ -1,0 +1,11 @@
+Next steps:
+
+- Figure out how to integrate with YouTube music
+    - YouTube Red? does that matter?
+    - how to play/pause playback on YouTube
+- fade in/fade out volume
+    - system wide volume controls?
+    - YouTube-specific and Spotify-specific volume controls?
+- figure out MIDI output
+    - experiment with SoundSwitch MIDI control
+    - experiment with Python library MIDI control
