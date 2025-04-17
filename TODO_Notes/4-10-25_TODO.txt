@@ -8,4 +8,5 @@ Next steps:
     - YouTube-specific and Spotify-specific volume controls?
 - figure out MIDI output
     - experiment with SoundSwitch MIDI control
+        - use Akai Mini MIDI controller
     - experiment with Python library MIDI control
