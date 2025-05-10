@@ -8,7 +8,9 @@ GitHub: @rlwelch1
 # Getting Started
 1. Download `poetry`
 2. Clone the repository
-3. 
+3. Navigate to the root (same directory as `pyproject.toml`)
+4. Run `poetry install`
+5. Run `poetry run python3 audio_player` to run the project (currently runs in terminal)
 
 # Features (planned)
 
