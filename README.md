@@ -14,6 +14,8 @@ GitHub: @rlwelch1
 
 # Features (planned)
 
+1. Add a one button with pySide6
+
 ## Get Simple Auth Working
 
 1. Follow along with [Spotify Authentication](auth/implement_auth.txt) to 
